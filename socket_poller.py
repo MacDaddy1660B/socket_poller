@@ -7,7 +7,7 @@ s_sock = socket.socket(
         socket.SOCK_STREAM
         )
 s_sock.bind( ('localhost', 45678) )
-s_sock.listen(5)
+s_sock.listen()
 s_sock.setblocking(False)
 
 # set up poller and register server
@@ -16,7 +16,7 @@ poller = select.poll()
 poller.register(s_sock, select.POLLIN)
 
 # This dictionary maps file descriptors to
-# server and client sockets
+# client sockets
 fd_sock = {}
 
 # Start poller mainloop
